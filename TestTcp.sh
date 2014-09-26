@@ -16,14 +16,14 @@ TestTcp(){
     $Conn = $i = 0;
     while ($i < @SvrList) {
         ($Addr,$Port) = split(":",$SvrList[$i++]);
-        if ($sock = new IO::Socket::INET(PeerAddr => $Addr, PeerPort => $Port, Timeout => 1, Proto => 'tcp')) {
+        if ($sock = new IO::Socket::INET(PeerAddr => $Addr, PeerPort => $Port, Timeout => 1, Proto => "tcp")) {
             print STDOUT "$Addr:$Port:Connected";
         }
         else {
             print STDOUT "$Addr:$Port:Failed";
         }
         close($sock);
-    };'
+    }'
 }
 
-TestTcp $1
+TestTcp "$1"
