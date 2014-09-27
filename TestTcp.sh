@@ -8,7 +8,7 @@
 #
 
 TestTcp(){
-    export mac_port_list = $1
+    export mac_port_list=$1
     perl -wle '
     use IO::Socket;
 
