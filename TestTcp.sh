@@ -8,18 +8,17 @@
 #
 
 TestTcp(){
-    export mac_port_list=$1
-    perl -le '
+    export mac_port_list = $1
+    perl -wle '
     use IO::Socket;
 
     @SvrList = split(",",$ENV{"mac_port_list"});
-    $Conn = $i = 0;
-    while ($i < @SvrList) {
-        ($Addr,$Port) = split(":",$SvrList[$i++]);
+    $sock = NULL;
+    for($i=0;$i<@SvrList;$i++) {
+        ($Addr,$Port) = split(":",$SvrList[$i]);
         if ($sock = new IO::Socket::INET(PeerAddr => $Addr, PeerPort => $Port, Timeout => 1, Proto => "tcp")) {
             print STDOUT "$Addr:$Port:Connected";
-        }
-        else {
+        } else {
             print STDOUT "$Addr:$Port:Failed";
         }
         close($sock);
