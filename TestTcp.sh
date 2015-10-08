@@ -26,3 +26,4 @@ TestTcp(){
 }
 
 TestTcp "$1"
+echo "good"
